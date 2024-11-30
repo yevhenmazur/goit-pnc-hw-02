@@ -1,4 +1,5 @@
 '''Модуль виконує шифрування та розшифровку за алгоритмом Віженера. Результат складає у файл'''
+import re
 
 def extend_key(text, key):
     '''Якщо ключ коротший за plaintext, то розширити його до розміру plaintext'''
@@ -44,10 +45,15 @@ def vigenere_decrypt(cipher_text, key):
 PLAINTEXT_FILE = 'plain_text.txt'
 CIPHERTEXT_FILE = 'cipher_text.txt'
 KEY = "CRYPTOGRAPHY"
+# KEY = "ANYKEY"
 
 print(f"Зчитую текст із файлу {PLAINTEXT_FILE}")
 with open(PLAINTEXT_FILE, 'r', encoding='utf-8') as file:
     TEXT = file.read()
+
+# Нормалізація тексту необхідна для коректної роботи тесту Касіскі.
+# Шифрування і розшифровка працює і без неї.
+TEXT = re.sub(r'[^A-Z]', '', TEXT.upper())
 
 print("Застосовую шифрування")
 ENCRYPTED_TEXT = vigenere_encrypt(TEXT, KEY)
