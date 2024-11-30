@@ -1,6 +1,5 @@
 '''Реалізація тесту Касіскі для визначення довжини ключа у шифрі Віженера'''
 from collections import defaultdict
-import re
 
 def find_repeated_sequences(ciphertext, sequence_length=3):
     '''Знаходимо повторювані послідовності у шифротексті.'''
