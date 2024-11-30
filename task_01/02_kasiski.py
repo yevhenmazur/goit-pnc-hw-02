@@ -80,10 +80,9 @@ def kasiski_analysis(ciphertext, sequence_length=3):
     return filter_divisors(common_divisors), common_divisors
 
 
-CIPHERTEXT_FILE = 'cipher_text.txt'
+CIPHERTEXT_FILE = 'task_01/cipher_text.txt'
 with open(CIPHERTEXT_FILE, 'r', encoding='utf-8') as file:
     cipher_text = file.read()
-cipher_text = re.sub(r'[^A-Z]', '', cipher_text.upper())
 
 filtered_divisor, result = kasiski_analysis(cipher_text, sequence_length=3)
 

@@ -43,7 +43,7 @@ def vigenere_decrypt(cipher_text, key):
 
 # Використання
 PLAINTEXT_FILE = 'plain_text.txt'
-CIPHERTEXT_FILE = 'cipher_text.txt'
+CIPHERTEXT_FILE = 'task_01/cipher_text.txt'
 KEY = "CRYPTOGRAPHY"
 # KEY = "ANYKEY"
 
@@ -51,15 +51,11 @@ print(f"Зчитую текст із файлу {PLAINTEXT_FILE}")
 with open(PLAINTEXT_FILE, 'r', encoding='utf-8') as file:
     TEXT = file.read()
 
-# Нормалізація тексту необхідна для коректної роботи тесту Касіскі.
-# Шифрування і розшифровка працює і без неї.
-TEXT = re.sub(r'[^A-Z]', '', TEXT.upper())
-
 print("Застосовую шифрування")
 ENCRYPTED_TEXT = vigenere_encrypt(TEXT, KEY)
 print("Зашифрований текст:", ENCRYPTED_TEXT)
 print(f"Записую зашифрований текст у файл {CIPHERTEXT_FILE}")
-with open('cipher_text.txt', 'w', encoding='utf-8') as file:
+with open(CIPHERTEXT_FILE, 'w', encoding='utf-8') as file:
     file.write(ENCRYPTED_TEXT)
 
 print("Розшифровую текст для перевірки правильності роботи алгоритму")
