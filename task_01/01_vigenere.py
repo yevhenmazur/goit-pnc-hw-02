@@ -1,5 +1,4 @@
 '''Модуль виконує шифрування та розшифровку за алгоритмом Віженера. Результат складає у файл'''
-import re
 
 def extend_key(text, key):
     '''Якщо ключ коротший за plaintext, то розширити його до розміру plaintext'''
@@ -47,17 +46,17 @@ CIPHERTEXT_FILE = 'task_01/cipher_text.txt'
 KEY = "CRYPTOGRAPHY"
 # KEY = "ANYKEY"
 
-print(f"Зчитую текст із файлу {PLAINTEXT_FILE}")
+print(f"Зчитую текст із файлу {PLAINTEXT_FILE}...")
 with open(PLAINTEXT_FILE, 'r', encoding='utf-8') as file:
     TEXT = file.read()
 
-print("Застосовую шифрування")
+print("Застосовую шифрування...")
 ENCRYPTED_TEXT = vigenere_encrypt(TEXT, KEY)
 print("Зашифрований текст:", ENCRYPTED_TEXT)
-print(f"Записую зашифрований текст у файл {CIPHERTEXT_FILE}")
+print(f"Записую зашифрований текст у файл {CIPHERTEXT_FILE}...")
 with open(CIPHERTEXT_FILE, 'w', encoding='utf-8') as file:
     file.write(ENCRYPTED_TEXT)
 
-print("Розшифровую текст для перевірки правильності роботи алгоритму")
+print("\nРозшифровую текст для перевірки правильності роботи алгоритму...")
 DECRYPTED_TEXT = vigenere_decrypt(ENCRYPTED_TEXT, KEY)
 print("Розшифрований текст:", DECRYPTED_TEXT)

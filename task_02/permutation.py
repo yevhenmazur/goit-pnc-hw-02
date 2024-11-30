@@ -1,7 +1,6 @@
 '''Шифрування перестановкою'''
 import re
 
-
 def generate_permutation_key(key: str) -> list:
     '''Генерує порядок для перестановки на основі текстового ключа'''
     indexed_phrase = list(enumerate(key))
@@ -46,6 +45,12 @@ def decrypt(cipher_text, key):
     blocks = [cipher_text[i:i + block_size]
               for i in range(0, len(cipher_text), block_size)]
 
+    # Перевіряємо, чи всі блоки мають однакову довжину
+    for i, block in enumerate(blocks):
+        if len(block) < block_size:
+            # Доповнюємо пробілами, якщо блок коротший
+            blocks[i] = block.ljust(block_size)
+
     # Створюємо зворотний ключ (індекси для розшифрування)
     inverse_key = [key.index(i) for i in range(len(key))]
 
@@ -64,7 +69,6 @@ def decrypt(cipher_text, key):
 def main():
 
     PLAINTEXT_FILE = 'plain_text.txt'
-    CIPHERTEXT_FILE = 'task_02/cipher_text.txt'
     KEY = "SECRET"
 
     print(f"Зчитую текст із файлу {PLAINTEXT_FILE}")
